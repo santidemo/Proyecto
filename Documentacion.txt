@@ -1,0 +1,51 @@
+Cosas tomadas en cuenta para el proceso del juego:
+    *Comida
+    *Choque de colisiones 
+    *Movimiento 
+    *Colision entre los bordes de la pantalla creada
+    *bucle principal
+    *hacer crecer  el gusanito  
+
+
+Explicacion de algunos procesos 
+Archivo : juego.py:
+
+#Choque de colicion contra la pantalla
+        if cabeza.xcor() > 280 or cabeza.xcor() < -280 or cabeza.ycor() > 280 or cabeza.ycor() < -280:
+            (En la primera condicion verifica si la cabeza del gusanito ah alcanzado los limites de la pantalla 
+            en el caso que si lo haga se hace estas ordenes :)
+                time.sleep(1) "Se pausa el juego "
+                cabeza.goto(0, 0)  "vuelve al centro"
+                cabeza.direction = "stop" "Se detiene"
+                for i in crece:
+                    i.goto(1000, 1000) "Se crea una nueva parte del cuerpo ya que los demas segmentos sumados 
+                    fueron tirados a posiciones alegadas "
+                crece.clear()
+
+#Comida 
+if cabeza.distance(comida) < 20 : ( verifica si el gusano esta cerca de la manzana )
+ ""x = random.randint(-280, 280)
+ y = random.randint(-280, 280)
+ 
+        (esto crea nueva posicion  de la comida una vez que es consumida 
+        tanto la posicion x, y son random)
+            ""
+
+come_crece = turtle.Turtle() "se crea un nuevo objeto donde es parte del gusano"
+(come_crece.shape("square")
+come_crece.color("dark red")
+
+     se declara la forma del objeto y el color )
+        come_crece.penup() (se levanta el lapiz que tiene por defecto)
+        crece.append(come_crece) y  finalmente se agrega a la lista de como_crece 
+
+
+#Logica 
+for i in range(cantidad - 1, 0, -1) en este ciclo itera  cont todas las partes del cuerpo del gusano 
+ya se 
+7,9,10 pero lo que hace es que comienza desde la ultima moviendose hacia atras hasta adelante 
+x = crece[i - 1].xcor()
+y = crece[i - 1].ycor()
+ y estas dos igualaciones son puntos actuales donde  se obtiene las coordenadas 
+ crece[i].goto(x, y) y para finalizar mueve la parte del cuerpo nueva hacia las coordenadas que actualizamos anteriormente
+ 
